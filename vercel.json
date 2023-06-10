@@ -1,0 +1,24 @@
+{
+  "env": {
+    "NEXT_PUBLIC_X_API_KEY": "thbappy1122",
+    "NEXT_PUBLIC_REST_API_ENDPOINT": "https://admin.absolutionit.com/api",
+    "NEXT_PUBLIC_SITE_URL": "https://ministry-of-power.vercel.app",
+    "NEXT_PUBLIC_FACEBOOK_APP_ID": "647750323486264",
+    "NEXT_PUBLIC_FACEBOOK_APP_FEED_LINK": "https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FMPEMR&tabs=timeline&width=340&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true",
+    "NEXT_PUBLIC_TWITTER_NAME": "mopemr",
+    "NEXT_PUBLIC_YOUTUBE_KEY": "AIzaSyBESqUljasN8t_ve3xyc8bv-RFzNGjyDpQ",
+    "NEXT_PUBLIC_YOUTUBE_CHANNEL_ID": "UCmqjLkieBtXPG00EQUDoDfA"
+  },
+  "build": {
+    "env": {
+      "NEXT_PUBLIC_X_API_KEY": "thbappy1122",
+      "NEXT_PUBLIC_REST_API_ENDPOINT": "https://admin.absolutionit.com/api",
+      "NEXT_PUBLIC_SITE_URL": "https://ministry-of-power.vercel.app",
+      "NEXT_PUBLIC_FACEBOOK_APP_ID": "647750323486264",
+      "NEXT_PUBLIC_FACEBOOK_APP_FEED_LINK": "https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FMPEMR&tabs=timeline&width=340&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true",
+      "NEXT_PUBLIC_TWITTER_NAME": "mopemr",
+      "NEXT_PUBLIC_YOUTUBE_KEY": "AIzaSyBESqUljasN8t_ve3xyc8bv-RFzNGjyDpQ",
+      "NEXT_PUBLIC_YOUTUBE_CHANNEL_ID": "UCmqjLkieBtXPG00EQUDoDfA"
+    }
+  }
+}
