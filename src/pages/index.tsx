@@ -10,29 +10,29 @@ import LatestNews from "@components/latest-news/LatestNews";
 export { getStaticProps } from "@framework/ssr/home-page.ssr";
 
 export default function Home() {
-  const [scrollPosition, setScrollPosition] = useState(0);
-  const handleScroll = () => {
-    const position = window.pageYOffset;
-    setScrollPosition(position);
-  };
+  // const [scrollPosition, setScrollPosition] = useState(0);
+  // const handleScroll = () => {
+  //   const position = window.pageYOffset;
+  //   setScrollPosition(position);
+  // };
 
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll, { passive: true });
+  // useEffect(() => {
+  //   window.addEventListener("scroll", handleScroll, { passive: true });
 
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+  //   return () => {
+  //     window.removeEventListener("scroll", handleScroll);
+  //   };
+  // }, []);
   return (
     <div>
-      <div className={scrollPosition < 400 ? "hidden" : ""}>
+      {/* <div className={scrollPosition < 400 ? "hidden" : ""}>
         <div className="fixed bottom-0 right-0 z-50">
           <SideSocial />
         </div>
-      </div>
+      </div> */}
       <Header />
-      <div className="pb-32">
-        <div className="lg:pb-[503px] pb-16 bg-[#F8FAFF]">
+      <div className="lg:pb-32 pb-16">
+        <div className="lg:pb-[503px] pb-5 bg-[#F8FAFF]">
           <Biography />
         </div>
         <div className="lg:-mt-96">

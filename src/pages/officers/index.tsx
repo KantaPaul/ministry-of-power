@@ -9,20 +9,22 @@ import { SearchIcon } from "@components/icons/search";
 export { getStaticProps } from "@framework/ssr/news.energy.index.ssr";
 
 export default function Officers() {
-  const [scrollPosition, setScrollPosition] = useState(0);
+  // const [scrollPosition, setScrollPosition] = useState(0);
   const [page, setPage] = useState("1");
   const [searchText, setSearchText] = useState("");
   const router = useRouter();
   const { officers, isLoading, error } = useOfficers({
     limit: 8,
     page,
-    search: searchText?.length > 3 ? searchText?.toLowerCase() ?? "" : null,
+    ...(searchText && {
+      search: searchText?.length > 3 ? searchText?.toLowerCase() ?? "" : null,
+    }),
   });
 
-  const handleScroll = () => {
-    const position = window.pageYOffset;
-    setScrollPosition(position);
-  };
+  // const handleScroll = () => {
+  //   const position = window.pageYOffset;
+  //   setScrollPosition(position);
+  // };
 
   const handlePagination = useCallback(
     (current: number) => {
@@ -31,13 +33,13 @@ export default function Officers() {
     [router?.query]
   );
 
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll, { passive: true });
+  // useEffect(() => {
+  //   window.addEventListener("scroll", handleScroll, { passive: true });
 
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+  //   return () => {
+  //     window.removeEventListener("scroll", handleScroll);
+  //   };
+  // }, []);
 
   useEffect(() => {
     setPage(router?.query?.page as string);
@@ -55,11 +57,11 @@ export default function Officers() {
 
   return (
     <div>
-      <div className={scrollPosition < 400 ? "hidden" : ""}>
+      {/* <div className={scrollPosition < 400 ? "hidden" : ""}>
         <div className="fixed bottom-0 right-0 z-50">
           <SideSocial />
         </div>
-      </div>
+      </div> */}
       <Banner
         innerBannerBgImg={"/assets/img/inner-banner.png"}
         tag="MPEMR"

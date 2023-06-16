@@ -64,7 +64,9 @@ const Partner = () => {
                             selected ? "bg-primary active" : "bg-secondary"
                           )}
                         >
-                          {type}
+                          {index === 0
+                            ? type?.replace("electricity", "Power Division")
+                            : type?.replace("emrd", "EMRD")}
                         </span>
                       )}
                     </Tab>
