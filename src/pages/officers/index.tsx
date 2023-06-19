@@ -1,4 +1,4 @@
-import SideSocial from "@components/common/SideSocial";
+// import SideSocial from "@components/common/SideSocial";
 import { useEffect, useState, useCallback } from "react";
 import Banner from "@components/banner/Banner";
 import { useOfficers } from "@framework/officers";
@@ -65,7 +65,7 @@ export default function Officers() {
       <Banner
         innerBannerBgImg={"/assets/img/inner-banner.png"}
         tag="MPEMR"
-        title="Honorable Prime Minister"
+        title="Officers"
         subTitle="Officers Profile"
       />
 

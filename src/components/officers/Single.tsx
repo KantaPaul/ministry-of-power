@@ -39,7 +39,7 @@ const OfficerSingle = ({ data }: { data: Officers }) => {
                   {data?.designation} ({data?.organizations})
                 </p>
                 <p
-                  className="text-[#8F8F8F] mt-6 leading-5"
+                  className="text-[#8F8F8F] mt-6 leading-6"
                   dangerouslySetInnerHTML={{
                     __html: DOMPurify.sanitize(data?.description),
                   }}

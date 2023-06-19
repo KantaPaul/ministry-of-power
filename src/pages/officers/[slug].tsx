@@ -15,7 +15,7 @@ const OfficerSingle = ({ officer }: any) => {
       <Banner
         innerBannerBgImg={"/assets/img/inner-banner.png"}
         tag="MPEMR"
-        title="Honorable Prime Minister"
+        title="Officer"
         subTitle={data?.officer_name}
       />
 
