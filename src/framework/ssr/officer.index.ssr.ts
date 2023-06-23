@@ -18,12 +18,12 @@ export const getStaticProps: GetStaticProps = async () => {
   );
 
   const params = {
-    limit: 8,
+    type: "all",
   };
 
   await queryClient.prefetchQuery(
-    [API_ENDPOINTS.OFFICERS_LIST, params],
-    ({ queryKey }) => client.officers.get(queryKey[1])
+    [API_ENDPOINTS.OFFICERS_LIST_NEW, params],
+    ({ queryKey }) => client.officers.getBySlug(queryKey[1])
   );
 
   return {

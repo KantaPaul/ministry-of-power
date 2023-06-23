@@ -4,11 +4,11 @@ import Banner from "@components/banner/Banner";
 import { useOfficersGetBySlug } from "@framework/officers";
 import OfficerCard from "@components/officers/OfficerCard";
 import { isEmpty, isArray } from "lodash";
-export { getStaticProps } from "@framework/ssr/news.energy.index.ssr";
 import { OfficerType } from "@type/index";
 import Loader from "@components/Loader";
 import Alert from "@components/Alert";
 import OfficerTabCard from "@components/officers/OfficerTabCard";
+export { getStaticProps } from "@framework/ssr/officer.index.ssr";
 
 export default function Officers() {
   const { items, isLoading, error } = useOfficersGetBySlug({
