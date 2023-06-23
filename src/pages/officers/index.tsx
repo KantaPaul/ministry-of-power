@@ -1,67 +1,55 @@
 // import SideSocial from "@components/common/SideSocial";
-import { useEffect, useState, useCallback } from "react";
+import { useMemo } from "react";
 import Banner from "@components/banner/Banner";
-import { useOfficers } from "@framework/officers";
-import OfficeMember from "@components/officers/Officers";
-import Pagination from "@components/ui/Pagination";
-import { useRouter } from "next/router";
-import { SearchIcon } from "@components/icons/search";
+import { useOfficersGetBySlug } from "@framework/officers";
+import OfficerCard from "@components/officers/OfficerCard";
+import { isEmpty, isArray } from "lodash";
 export { getStaticProps } from "@framework/ssr/news.energy.index.ssr";
+import { OfficerType } from "@type/index";
+import Loader from "@components/Loader";
+import Alert from "@components/Alert";
+import OfficerTabCard from "@components/officers/OfficerTabCard";
 
 export default function Officers() {
-  // const [scrollPosition, setScrollPosition] = useState(0);
-  const [page, setPage] = useState("1");
-  const [searchText, setSearchText] = useState("");
-  const router = useRouter();
-  const { officers, isLoading, error } = useOfficers({
-    limit: 8,
-    page,
-    ...(searchText && {
-      search: searchText?.length > 3 ? searchText?.toLowerCase() ?? "" : null,
-    }),
+  const { items, isLoading, error } = useOfficersGetBySlug({
+    type: "all",
   });
 
-  // const handleScroll = () => {
-  //   const position = window.pageYOffset;
-  //   setScrollPosition(position);
-  // };
+  const getFirstTwoItems = useMemo(() => {
+    return !isEmpty(items) && isArray(items) ? items?.slice(0, 2) : [];
+  }, [items]);
 
-  const handlePagination = useCallback(
-    (current: number) => {
-      router.push(`?page=${current.toString()}`);
-    },
-    [router?.query]
-  );
+  const getAnotherItems = useMemo(() => {
+    return !isEmpty(items) && isArray(items) && items?.length > 2
+      ? items?.slice(2, items?.length)
+      : [];
+  }, [items]);
 
-  // useEffect(() => {
-  //   window.addEventListener("scroll", handleScroll, { passive: true });
+  if (isLoading) {
+    return (
+      <div className="py-[60px] md:py-[120px] flex justify-center">
+        <div className="content_body">
+          <Loader />
+        </div>
+      </div>
+    );
+  }
 
-  //   return () => {
-  //     window.removeEventListener("scroll", handleScroll);
-  //   };
-  // }, []);
+  if (error) {
+    return (
+      <div className="my-40">
+        <div className="container mx-auto">
+          {/* @ts-ignore */}
+          <Alert type="error" message={error?.message} />
+        </div>
+      </div>
+    );
+  }
 
-  useEffect(() => {
-    setPage(router?.query?.page as string);
-  }, [router?.query]);
-
-  const handleOnChange = useCallback(
-    (event: React.ChangeEvent<HTMLInputElement>) => {
-      setSearchText(event.target.value);
-      if (event.target.value.length > 3 && router?.query?.page !== "1") {
-        router.push(`?page=1`);
-      }
-    },
-    [searchText]
-  );
+  const className = "bg-[#F7F7F7] p-4 lg:p-[3.75rem] rounded-[1.25rem]";
 
   return (
     <div>
-      {/* <div className={scrollPosition < 400 ? "hidden" : ""}>
-        <div className="fixed bottom-0 right-0 z-50">
-          <SideSocial />
-        </div>
-      </div> */}
       <Banner
         innerBannerBgImg={"/assets/img/inner-banner.png"}
         tag="MPEMR"
@@ -69,48 +57,28 @@ export default function Officers() {
         subTitle="Officers Profile"
       />
 
-      <div className="officers-section py-[60px] md:py-[120px]">
-        <div className="mb-16">
-          <div className="content_body">
-            <div className="search bg-[#F7F7F7] rounded-[10px] p-[30px] mb-[30px] relative">
-              <div className="relative">
-                <input
-                  className="w-full h-[45px] rounded-md px-[15px] outline-none bg-white placeholder:text-[#8F8F8F] placeholder:font-semibold "
-                  type="text"
-                  placeholder="Enter more then 3 characters"
-                  value={searchText}
-                  onChange={handleOnChange}
+      {!isEmpty(items) ? (
+        <div className="officers-section py-[60px] md:py-[120px]">
+          <div className="mb-16">
+            <div className="content_body lg:space-y-16 space-y-6">
+              {getFirstTwoItems?.map((item: OfficerType, index: number) => {
+                return (
+                  <div className={className} key={index}>
+                    <OfficerCard title={item?.name} slug={item?.slug} />
+                  </div>
+                );
+              })}
+              <div className={className}>
+                <OfficerTabCard
+                  types={getAnotherItems}
+                  title="কর্মকর্তাবৃন্দ"
                 />
-                <button className="absolute top-[50%] translate-y-[-50%] right-[15px]">
-                  <SearchIcon />
-                </button>
               </div>
             </div>
           </div>
         </div>
-
-        <OfficeMember
-          officers={officers?.data}
-          isLoading={isLoading}
-          error={error}
-        />
-      </div>
-
-      {/* @ts-ignore */}
-      {!!officers?.pagination?.total && (
-        <div className="mt-11 mb-32">
-          <div className="content_body">
-            <Pagination
-              // @ts-ignore
-              total={officers?.pagination?.total}
-              // @ts-ignore
-              current={officers?.pagination?.currentPage}
-              // @ts-ignore
-              pageSize={officers?.pagination?.perPage}
-              onChange={handlePagination}
-            />
-          </div>
-        </div>
+      ) : (
+        ""
       )}
     </div>
   );

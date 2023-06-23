@@ -86,3 +86,31 @@ export type Youtube = {
     title: string;
   };
 };
+
+export type OfficersNew = {
+  designation: string;
+  designation_en: string;
+  email: string;
+  fax: string;
+  id: number;
+  image: string;
+  mobile: string;
+  name_bn: string;
+  name_en: string;
+  order: string;
+  phone_home: string;
+  phone_office: string;
+  type: string;
+  type_slug: string;
+};
+
+export type OfficerType = {
+  id: number;
+  name: string;
+  name_en: string;
+  slug: string;
+  order: string;
+  status: string;
+  created_at: string;
+  updated_at: string;
+};

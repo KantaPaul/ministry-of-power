@@ -16,6 +16,7 @@ export const API_ENDPOINTS = {
   NEWS_POWER: "/news/power",
   NEWS_ENERGY: "/news/energy",
   OFFICERS_LIST: "/officer-list",
+  OFFICERS_LIST_NEW: "/officer-info",
   RUNNING_PROJECT: "/running-project",
   DOCUMENT_INFO: "/document-type-info",
   OFFICE_ENERGY: "/office/energy",

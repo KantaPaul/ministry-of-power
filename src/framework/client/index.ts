@@ -77,6 +77,10 @@ class Client {
       HttpClient.get<Officers>(`${API_ENDPOINTS.OFFICERS_LIST}`, {
         ...params,
       }),
+    getBySlug: (params?: any) =>
+      HttpClient.get<Officers>(`${API_ENDPOINTS.OFFICERS_LIST_NEW}`, {
+        ...params,
+      }),
   };
   runningProject = {
     get: (params?: any) =>
