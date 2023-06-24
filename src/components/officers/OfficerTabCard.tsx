@@ -49,7 +49,11 @@ const OfficerTabCard = ({
                     }
                     key={index}
                   >
-                    <OfficerCard slug={type?.slug} showTitle={false} />
+                    <OfficerCard
+                      limit={1}
+                      slug={type?.slug}
+                      showTitle={false}
+                    />
                   </Tab.Panel>
                 );
               })}

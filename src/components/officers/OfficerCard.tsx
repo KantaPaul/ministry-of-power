@@ -7,22 +7,27 @@ import Image from "@components/ui/Image";
 import { isEmpty, isArray } from "lodash";
 import { OfficersNew } from "@type/index";
 import Link from "next/link";
+import { useMemo } from "react";
 
 const OfficerCard = ({
   title,
   slug,
   className,
   showTitle = true,
+  limit,
   ...props
 }: {
   title?: string;
   slug: string;
   showTitle?: boolean;
   className?: string;
+  limit?: number;
 }) => {
-  const { items, isLoading, error } = useOfficersGetBySlug({
-    slug: slug,
-  });
+  const { items, isLoading, error, loadMore, isLoadingMore, hasMore } =
+    useOfficersGetBySlug({
+      slug: slug,
+      ...(limit && { limit: limit }),
+    });
 
   if (isLoading) {
     return (
@@ -45,7 +50,7 @@ const OfficerCard = ({
   return (
     <div className={cn("w-full", className)} {...props}>
       {showTitle ? <Heading title={title as string} /> : ""}
-      {!isEmpty(items) && isArray(items) ? (
+      {!isEmpty(items) && isArray(items) && items ? (
         <div className="space-y-5">
           {items?.map((item: OfficersNew, index: number) => {
             return (
@@ -203,6 +208,17 @@ const OfficerCard = ({
         </div>
       ) : (
         ""
+      )}
+      {hasMore && (
+        <div className="flex justify-center mt-8 lg:mt-12">
+          <button
+            // loading={isLoadingMore}
+            onClick={loadMore}
+            className="text-sm font-semibold h-11 md:text-base"
+          >
+            Load More
+          </button>
+        </div>
       )}
     </div>
   );

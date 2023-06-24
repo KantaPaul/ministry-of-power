@@ -1,7 +1,7 @@
 // import SideSocial from "@components/common/SideSocial";
 import { useMemo } from "react";
 import Banner from "@components/banner/Banner";
-import { useOfficersGetBySlug } from "@framework/officers";
+import { useOfficerType } from "@framework/officers";
 import OfficerCard from "@components/officers/OfficerCard";
 import { isEmpty, isArray } from "lodash";
 import { OfficerType } from "@type/index";
@@ -11,7 +11,7 @@ import OfficerTabCard from "@components/officers/OfficerTabCard";
 export { getStaticProps } from "@framework/ssr/officer.index.ssr";
 
 export default function Officers() {
-  const { items, isLoading, error } = useOfficersGetBySlug({
+  const { items, isLoading, error } = useOfficerType({
     type: "all",
   });
 

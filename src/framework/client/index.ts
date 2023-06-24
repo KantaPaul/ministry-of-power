@@ -7,6 +7,7 @@ import {
   EServiceProps,
   RunningProject,
   Youtube,
+  OfficerPaginator,
 } from "@type/index";
 import axios from "axios";
 
@@ -77,8 +78,12 @@ class Client {
       HttpClient.get<Officers>(`${API_ENDPOINTS.OFFICERS_LIST}`, {
         ...params,
       }),
-    getBySlug: (params?: any) =>
+    getType: (params?: any) =>
       HttpClient.get<Officers>(`${API_ENDPOINTS.OFFICERS_LIST_NEW}`, {
+        ...params,
+      }),
+    getBySlug: (params?: any) =>
+      HttpClient.get<OfficerPaginator>(`${API_ENDPOINTS.OFFICERS_LIST_NEW}`, {
         ...params,
       }),
   };

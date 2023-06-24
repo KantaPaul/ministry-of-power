@@ -114,3 +114,29 @@ export type OfficerType = {
   created_at: string;
   updated_at: string;
 };
+
+export interface MenuItem {
+  id: number;
+  menu_id: string;
+  parent_id: string;
+  title: string;
+  title_en: string;
+  link: string;
+  order: string;
+}
+
+export interface NavMenu extends MenuItem {
+  extranal_link: string;
+  children: [MenuItem[]];
+}
+
+export interface PaginatorInfo<T> {
+  currentPage: number;
+  data: T[];
+  perPage: number;
+  count: number;
+  total: number;
+  last_page: number;
+}
+
+export interface OfficerPaginator extends PaginatorInfo<Officers> {}

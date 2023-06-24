@@ -16,6 +16,10 @@ import {
   usePowerDivisionNews,
   usePowerDivisionOfficeNews,
 } from "@framework/power-division-news";
+import { NavMenu, MenuItem } from "@type/index";
+import { useRouter } from "next/router";
+import cn from "classnames";
+import { useEffect } from "react";
 
 const NavBar = () => {
   const {
@@ -25,6 +29,11 @@ const NavBar = () => {
   }: { menuItems: any; isLoading: boolean; error: any } = useMenuItems();
   const [token, setToken] = useState(0);
   const [openMenu, setOpenMenu] = useState(false);
+  const router = useRouter();
+
+  useEffect(() => {
+    setOpenMenu(false);
+  }, [router?.query])
 
   const params = {
     limit: 1000,
@@ -131,49 +140,62 @@ const NavBar = () => {
           <div className="flex item-center">
             <ul className="flex items-center gap-x-5">
               {navData?.data && navData?.data?.length
-                ? navData?.data?.map((el: any) => (
+                ? navData?.data?.map((el: NavMenu) => (
                     <li
                       style={{ cursor: "pointer" }}
-                      onMouseEnter={() => setToken(el.id)}
+                      onMouseEnter={() => setToken(el?.id)}
                       onMouseLeave={() => setToken(0)}
                       className="nav_text menu_parent px-2 py-5"
                       key={el.id}
                     >
-                      {el.children[0] && el.children[0].length ? (
+                      {el?.children[0] && el?.children[0]?.length ? (
                         <Link
                           href="#"
                           className="hover:text-primary transition-colors duration-300"
                         >
-                          {el.title}{" "}
+                          {el?.title}
                           <span>
                             <span>+</span>
                           </span>
                         </Link>
                       ) : (
                         <Link
-                          href={el.link}
-                          className="hover:text-primary transition-colors duration-300"
+                          href={el?.link}
+                          className={cn(
+                            "hover:text-primary transition-colors duration-300",
+                            el?.link === router?.asPath ? "text-secondary" : ""
+                          )}
+                          target={`${
+                            Number(el?.extranal_link) === 0 ? "_self" : "_blank"
+                          }`}
                         >
-                          {el.title}{" "}
+                          {el.title}
                         </Link>
                       )}
-                      {el.children[0] && el.children[0].length ? (
+                      {el?.children[0] && el?.children[0].length ? (
                         <ul className="menu_child rounded-b-md">
-                          {el.children[0].map((el2: any) => (
+                          {el?.children[0]?.map((el2: MenuItem) => (
                             <li
-                              key={el2.id}
+                              key={el2?.id}
                               style={{
                                 display: `${
-                                  token == el2.parent_id ? "block" : "none"
+                                  token === Number(el2?.parent_id)
+                                    ? "block"
+                                    : "none"
                                 }`,
                               }}
                               className="nav_text py-3 px-6 first:pt-6 last:pb-6"
                             >
                               <Link
-                                href={el2.link}
-                                className="hover:text-primary transition-colors duration-300"
+                                href={el2?.link}
+                                className={cn(
+                                  "hover:text-primary transition-colors duration-300",
+                                  el2?.link === router?.asPath
+                                    ? "text-secondary"
+                                    : ""
+                                )}
                               >
-                                {el2.title}
+                                {el2?.title}
                               </Link>
                             </li>
                           ))}
@@ -231,50 +253,77 @@ const NavBar = () => {
           {openMenu ? (
             <div>
               <ul className="flex flex-col items-start px-3 h-96 lg:h-auto overflow-auto lg:overflow-hidden	">
-                {navData.data && navData.data.length
-                  ? navData.data.map((el: any) => (
+                {navData?.data && navData?.data?.length
+                  ? navData?.data?.map((el: NavMenu) => (
                       <li
                         style={{ cursor: "pointer" }}
                         className="nav_text menu_parent px-2 py-5"
-                        key={el.id}
+                        key={el?.id}
                       >
-                        {el.children[0] && el.children[0].length ? (
+                        {el?.children[0] && el?.children[0].length ? (
                           <a
                             onClick={() =>
-                              setToken(token === el.id ? 0 : el.id)
+                              setToken(token === el?.id ? 0 : el?.id)
                             }
                           >
-                            {el.title}{" "}
+                            {el?.title}{" "}
                           </a>
                         ) : (
-                          <Link href={el.link}>{el.title} </Link>
+                          <Link
+                            href={el?.link}
+                            target={`${
+                              Number(el?.extranal_link) === 0
+                                ? "_self"
+                                : "_blank"
+                            }`}
+                            className={cn(
+                              "hover:text-primary transition-colors duration-300",
+                              el?.link === router?.asPath
+                                ? "text-secondary"
+                                : ""
+                            )}
+                          >
+                            {el?.title}{" "}
+                          </Link>
                         )}
                         <span>
-                          {el.children[0] && el.children[0].length ? (
+                          {el?.children[0] && el?.children[0]?.length ? (
                             <span className="px-2">
-                              {token === el.id ? (
+                              {token === el?.id ? (
                                 <span onClick={() => setToken(0)}>-</span>
                               ) : (
-                                <span onClick={() => setToken(el.id)}>+</span>
+                                <span onClick={() => setToken(el?.id)}>+</span>
                               )}
                             </span>
                           ) : (
                             ""
                           )}
                         </span>
-                        {el.children[0] && el.children[0].length ? (
+                        {el?.children[0] && el?.children[0].length ? (
                           <ul>
-                            {el.children[0].map((el2: any) => (
+                            {el?.children[0]?.map((el2: MenuItem) => (
                               <li
-                                key={el2.id}
+                                key={el2?.id}
                                 style={{
                                   display: `${
-                                    token == el2.parent_id ? "block" : "none"
+                                    token === Number(el2?.parent_id)
+                                      ? "block"
+                                      : "none"
                                   }`,
                                 }}
                                 className="nav_text py-3 px-6 first:py-6 last:pb-6"
                               >
-                                <Link href={el2.link}>{el2.title}</Link>
+                                <Link
+                                  href={el2?.link}
+                                  className={cn(
+                                    "hover:text-primary transition-colors duration-300",
+                                    el2?.link === router?.asPath
+                                      ? "text-secondary"
+                                      : ""
+                                  )}
+                                >
+                                  {el2?.title}
+                                </Link>
                               </li>
                             ))}
                           </ul>
