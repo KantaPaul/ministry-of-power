@@ -173,7 +173,7 @@ const NavBar = () => {
                         </Link>
                       )}
                       {el?.children[0] && el?.children[0].length ? (
-                        <ul className="menu_child rounded-b-md">
+                        <ul className="menu_child rounded-b-md shadow-md">
                           {el?.children[0]?.map((el2: MenuItem) => (
                             <li
                               key={el2?.id}

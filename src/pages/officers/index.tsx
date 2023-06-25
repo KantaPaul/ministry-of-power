@@ -64,7 +64,11 @@ export default function Officers() {
               {getFirstTwoItems?.map((item: OfficerType, index: number) => {
                 return (
                   <div className={className} key={index}>
-                    <OfficerCard title={item?.name} slug={item?.slug} />
+                    <OfficerCard
+                      limit={100}
+                      title={item?.name}
+                      slug={item?.slug}
+                    />
                   </div>
                 );
               })}

@@ -9,7 +9,7 @@ const NewsSingle = ({ post, posts }: any) => {
       <Banner
         innerBannerBgImg={"/assets/img/inner-banner.png"}
         tag="MPEMR"
-        title="Electricity Department"
+        title="Power Division"
         subTitle="Our latest news"
       />
       <SinglePost post={post} posts={posts} meta="news" />

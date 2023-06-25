@@ -50,7 +50,7 @@ const OfficerTabCard = ({
                     key={index}
                   >
                     <OfficerCard
-                      limit={1}
+                      limit={100}
                       slug={type?.slug}
                       showTitle={false}
                     />

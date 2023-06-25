@@ -7,7 +7,7 @@ import Image from "@components/ui/Image";
 import { isEmpty, isArray } from "lodash";
 import { OfficersNew } from "@type/index";
 import Link from "next/link";
-import { useMemo } from "react";
+// import { useMemo } from "react";
 
 const OfficerCard = ({
   title,
@@ -23,7 +23,7 @@ const OfficerCard = ({
   className?: string;
   limit?: number;
 }) => {
-  const { items, isLoading, error, loadMore, isLoadingMore, hasMore } =
+  const { items, isLoading, error, loadMore, hasMore } =
     useOfficersGetBySlug({
       slug: slug,
       ...(limit && { limit: limit }),
