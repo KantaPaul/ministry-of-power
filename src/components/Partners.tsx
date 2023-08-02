@@ -41,12 +41,11 @@ const Partner = () => {
       <div className="content_body">
         <div className="title text-center">
           <h3 className="text-4xl font-semibold text-[#000225] mt-[-9px]">
-            Our Partner
+            মন্ত্রণালয়ের প্রতিষ্ঠানসমূহ
           </h3>
           <p className="max-w-3xl mx-auto text-base text-[#8F8F8F] mt-[20px]">
-            Responsible for policy-making and implementation in all matters
-            related to transmission & distribution. Power sector is inextricably
-            linked to all three functions generation.
+            বিদ্যুৎ, জ্বালানি ও খনিজ সম্পদ মন্ত্রণালয়ের অধীনস্থ বিভিন্ন দপ্তর,
+            সংস্থা ও কোম্পানির ওয়েব সাইট এর লিঙ্ক
           </p>
         </div>
         {!isEmpty(types) && types && (
@@ -65,8 +64,11 @@ const Partner = () => {
                           )}
                         >
                           {index === 0
-                            ? type?.replace("electricity", "Power Division")
-                            : type?.replace("emrd", "EMRD")}
+                            ? type?.replace("electricity", "বিদ্যুৎ বিভাগ")
+                            : type?.replace(
+                                "emrd",
+                                "জ্বালানি ও খনিজ সম্পদ বিভাগ"
+                              )}
                         </span>
                       )}
                     </Tab>

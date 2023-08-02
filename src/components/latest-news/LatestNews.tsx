@@ -1,18 +1,17 @@
-import { useRunningProject } from "@framework/running-project";
 import Loader from "@components/Loader";
 import Alert from "@components/Alert";
-import { RunningProject } from "@type/index";
 import Image from "@components/ui/Image";
-import DOMPurify from "isomorphic-dompurify";
+import { isEmpty } from "lodash";
 import TabFeed from "@components/latest-news/TabFeed";
+import { useAchievement } from "@framework/achievement";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { AchievementImage } from "@type/index";
+import { Pagination } from "swiper";
 
 const LatestNews = () => {
-  const {
-    runningProject,
-    isLoading,
-    error,
-  }: { runningProject: RunningProject; isLoading: boolean; error: any } =
-    useRunningProject();
+  const { achievement, isLoading, error } = useAchievement({
+    type: 3,
+  });
 
   if (isLoading) {
     return (
@@ -28,11 +27,14 @@ const LatestNews = () => {
     return (
       <div className="my-40">
         <div className="container mx-auto">
+          {/* @ts-ignore */}
           <Alert type="error" message={error?.message} />
         </div>
       </div>
     );
   }
+
+  console.log(achievement);
 
   return (
     <div className="bg-[#F8FAFF] py-[60px] md:py-[120px]">
@@ -42,34 +44,39 @@ const LatestNews = () => {
             <div className="title">
               <div className="fancy_title relative">
                 <h2 className="font-semibold sm:text-[21px] text-primary pl-2.5 leading-[24.41px] uppercase">
-                  Ministry of power
+                  এক নজরে
                 </h2>
               </div>
-              {runningProject?.title ? (
-                <h3
-                  className="text-2xl sm:text-4xl py-4 font-semibold text-[#000225] mt-[-9px]"
-                  dangerouslySetInnerHTML={{
-                    __html: DOMPurify.sanitize(runningProject?.title),
-                  }}
-                />
-              ) : (
-                ""
-              )}
             </div>
-            <div className="latest-project-item mt-[27px]">
-              <Image
-                src={runningProject?.image}
-                alt={runningProject?.description}
-              />
-
-              {runningProject?.title ? (
-                <p className="text-[#555555;] font-semibold text-[16px] sm:text-2xl mt-[18px] leading pr-0 md:pr-16">
-                  {runningProject?.description}
-                </p>
-              ) : (
-                ""
-              )}
-            </div>
+            {!isEmpty(achievement) ? (
+              <Swiper
+                modules={[Pagination]}
+                loop={true}
+                speed={1000}
+                autoplay={{ delay: 3000 }}
+                slidesPerView={1}
+                effect={"fade"}
+                // centeredSlides={true}
+                pagination={{
+                  clickable: true,
+                }}
+                className="gallery-slider latest-news-slider mt-8"
+              >
+                {achievement?.map((image: AchievementImage, index: number) => (
+                  <SwiperSlide key={index}>
+                    <Image
+                      imageClassName="w-full image"
+                      src={image?.image}
+                      alt={image?.caption_bn}
+                      key={index}
+                      quality={100}
+                    />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            ) : (
+              ""
+            )}
           </div>
           <div className="col-span-12 lg:col-span-4">
             <div className="feed py-8 bg-white rounded-[20px] max-h-[740px]">

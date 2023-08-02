@@ -1,7 +1,7 @@
 import Image from "@components/ui/Image";
 import { useState } from "react";
 import { useMenuItems } from "@framework/menu-item";
-import Loader from "@components/Loader";
+// import Loader from "@components/Loader";
 import Alert from "@components/Alert";
 import Link from "next/link";
 import { VideoIcon } from "@components/icons/video-icons";
@@ -24,7 +24,7 @@ import { useEffect } from "react";
 const NavBar = () => {
   const {
     menuItems: navData,
-    isLoading,
+    // isLoading,
     error,
   }: { menuItems: any; isLoading: boolean; error: any } = useMenuItems();
   const [token, setToken] = useState(0);
@@ -33,7 +33,7 @@ const NavBar = () => {
 
   useEffect(() => {
     setOpenMenu(false);
-  }, [router?.query])
+  }, [router?.query]);
 
   const params = {
     limit: 1000,
@@ -115,13 +115,13 @@ const NavBar = () => {
     powerOfficeLoading,
   ]);
 
-  if (isLoading) {
-    return (
-      <div className="flex justify-center py-2">
-        <Loader />
-      </div>
-    );
-  }
+  // if (isLoading) {
+  //   return (
+  //     <div className="flex justify-center py-2">
+  //       <Loader />
+  //     </div>
+  //   );
+  // }
 
   if (error) {
     return (

@@ -1,6 +1,6 @@
 import type { InferGetStaticPropsType } from "next";
 import React from "react";
-import Banner from "@components/banner/Banner";
+// import Banner from "@components/banner/Banner";
 import { Biography } from "@type/index";
 import Seo from "@components/Seo";
 import { isEmpty } from "lodash";
@@ -28,12 +28,12 @@ const BiographySingle: React.FC<
         images={!isEmpty(data?.image) ? [data?.image] : []}
       />
 
-      <Banner
+      {/* <Banner
         innerBannerBgImg={"/assets/img/inner-banner.png"}
         tag="MPEMR"
         title={data?.title_en}
         subTitle="Biography"
-      />
+      /> */}
 
       <BiographyContent data={data} />
     </>

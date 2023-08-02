@@ -27,7 +27,8 @@
       "@containers/*": ["src/containers/*"],
       "@utils/*": ["src/utils/*"],
       "@settings/*": ["src/settings/*"],
-      "@type/*": ["src/types/*"]
+      "@type/*": ["src/types/*"],
+      "@fonts/*": ["src/fonts/*"]
     },
     "incremental": true
   },

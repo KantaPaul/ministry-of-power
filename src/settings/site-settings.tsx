@@ -7,37 +7,37 @@ export const siteSettings = {
     lightUrl: "/assets/img/logo-light.svg",
     alt: "Ministry of Power, Energy and Mineral Resources",
     href: "/",
-    width: 168,
+    width: 250,
     height: 48,
   },
   footer_links: {
-    title: "Development Partner",
+    title: "আমাদের উন্নয়ন সহযোগী",
     menu: [
       {
         id: 1,
         path: ROUTES?.WORLD_BANK,
-        label: "World Bank",
+        label: "বিশ্বব্যাংক",
         target: "_blank",
         rel: "nofollow",
       },
       {
         id: 2,
         path: ROUTES?.ADB,
-        label: "ADB",
+        label: "এশীয় উন্নয়ন ব্যাংক",
         target: "_blank",
         rel: "nofollow",
       },
       {
         id: 3,
         path: ROUTES?.JICA,
-        label: "JICA",
+        label: "জাইকা",
         target: "_blank",
         rel: "nofollow",
       },
     ],
   },
   contact: {
-    title: "Contact",
+    title: "আমাদের সাথে যোগাযোগের মাধ্যম",
     mails: [
       {
         id: 1,
@@ -104,7 +104,7 @@ export const siteSettings = {
       path: ROUTES?.INSTAGRAM,
       target: "_blank",
       rel: "nofollow",
-      label: "Youtube",
+      label: "Instagram",
     },
   ],
   copyright: {

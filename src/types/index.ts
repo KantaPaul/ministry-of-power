@@ -139,4 +139,33 @@ export interface PaginatorInfo<T> {
   last_page: number;
 }
 
+export interface HeaderSlider {
+  caption: string;
+  caption_en: string;
+  id: number;
+  image: string;
+  order: string;
+  short_description: string;
+  short_description_en: string;
+}
+
+export interface AchievementImage {
+  caption_bn: string;
+  caption_en: string;
+  id: number;
+  image: string;
+}
+
+export interface Achievement {
+  album_type_id: number;
+  album_type_title_bn: string;
+  album_type_title_en: string;
+  id: number;
+  images: AchievementImage[];
+  order: string;
+  title_bn: string;
+  title_en: string;
+  video_url: null;
+}
+
 export interface OfficerPaginator extends PaginatorInfo<Officers> {}

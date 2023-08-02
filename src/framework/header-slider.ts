@@ -12,7 +12,8 @@ export function useHeaderSlider(params?: any, options?: any) {
   );
 
   return {
-    headerSlider: data ?? [],
+    // @ts-ignore
+    headerSlider: data?.data ?? [],
     isLoading,
     error,
   };

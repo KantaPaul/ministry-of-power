@@ -3,7 +3,7 @@ import Pagination from "@components/ui/Pagination";
 import { useState, useCallback, useEffect } from "react";
 import NewsCard from "@components/news/NewsCard";
 import { useRouter } from "next/router";
-import Banner from "@components/banner/Banner";
+// import Banner from "@components/banner/Banner";
 export { getStaticProps } from "@framework/ssr/news.power.index.ssr";
 import Loader from "@components/Loader";
 import Alert from "@components/Alert";
@@ -54,12 +54,12 @@ const NewsPowerPostsList = () => {
 
   return (
     <>
-      <Banner
+      {/* <Banner
         innerBannerBgImg={"/assets/img/inner-banner.png"}
         tag="MPEMR"
         title="Electricity Department"
         subTitle="Our latest news"
-      />
+      /> */}
       <div className="pb-[120px] pt-[90px]">
         <div className="content_body">
           <NewsCard news={powerNews} meta="office" />

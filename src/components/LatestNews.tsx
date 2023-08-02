@@ -8,14 +8,14 @@ const LatestNews = () => {
   return (
     <div>
       <div className="content_body">
-        <div className="hidden lg:flex justify-between md:flex-row flex-col py-5">
+        <div className="hidden lg:flex justify-between md:flex-row flex-col py-5 items-center">
           <div>
             <LogoDark />
           </div>
           <div style={{ width: "72%" }}>
             <div className="flex w-full">
               <div
-                style={{ width: "85%" }}
+                style={{ width: "100%" }}
                 className="px-5 py-2.5 border flex items-center border-border1 rounded-l-md relative overflow-hidden"
               >
                 <div>
@@ -42,18 +42,11 @@ const LatestNews = () => {
                 </div>
               </div>
               <div
-                className="px-5 py-3.5 rounded-r-md"
-                style={{ backgroundColor: "#E5F0ED", width: "15%" }}
+                className="px-5 py-3.5 rounded-r-md w-auto shrink-0 flex"
+                style={{ backgroundColor: "#E5F0ED" }}
               >
-                <p
-                  style={{
-                    fontSize: "16px",
-                    fontWeight: "500",
-                    lineHeight: "19.36px",
-                    color: "#006A4E",
-                  }}
-                >
-                  Latest News
+                <p className="text-base font-medium text-secondary m-auto">
+                  স্ক্রল
                 </p>
               </div>
             </div>
@@ -76,9 +69,9 @@ const LatestNews = () => {
               <div className="px-2 py-1.5 md:px-5 md:py-2.5 w-[70%] md:w-[85%] border flex items-center border-border1 rounded-l-md">
                 <div style={{ width: "100%" }}>
                   <Marquee pauseOnHover>
-                    {newsList.data &&
-                      newsList.data.length &&
-                      newsList.data.map((el: any) => (
+                    {newsList?.data &&
+                      newsList?.data.length &&
+                      newsList?.data.map((el: any) => (
                         <div key={el.id}>
                           <p
                             style={{
@@ -100,16 +93,7 @@ const LatestNews = () => {
                 className="px-2 py-1.5 md:px-5 md:py-3.5 rounded-r-md flex justify-center items-center"
                 style={{ backgroundColor: "#E5F0ED", width: "136px" }}
               >
-                <p
-                  style={{
-                    fontSize: "16px",
-                    fontWeight: "500",
-                    lineHeight: "19.36px",
-                    color: "#006A4E",
-                  }}
-                >
-                  Latest News
-                </p>
+                <p className="text-base font-medium text-secondary">স্ক্রল</p>
               </div>
             </div>
           </div>

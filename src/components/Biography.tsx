@@ -7,7 +7,7 @@ import { Routes } from "@config/routes";
 import Link from "next/link";
 import DOMPurify from "isomorphic-dompurify";
 import { Biography, About } from "@type/index";
-import Loader from "@components/Loader";
+// import Loader from "@components/Loader";
 import Alert from "@components/Alert";
 import NextImage from "next/image";
 import { useCallback } from "react";
@@ -17,13 +17,13 @@ import { ReadMoreIcon } from "@components/icons/readmore";
 const Biography = () => {
   const {
     about: aboutData,
-    isLoading: aboutLoading,
+    // isLoading: aboutLoading,
     error: aboutError,
   }: { about: About; isLoading: boolean; error: any } = useAbout();
 
   const {
     biography,
-    isLoading,
+    // isLoading,
     error,
   }: { biography: Biography[]; isLoading: boolean; error: any } =
     useBiography();
@@ -42,15 +42,15 @@ const Biography = () => {
     });
   }, []);
 
-  if (isLoading || aboutLoading) {
-    return (
-      <div className="py-[60px] md:py-[120px] flex justify-center">
-        <div className="content_body">
-          <Loader />
-        </div>
-      </div>
-    );
-  }
+  // if (isLoading || aboutLoading) {
+  //   return (
+  //     <div className="py-[60px] md:py-[120px] flex justify-center">
+  //       <div className="content_body">
+  //         <Loader />
+  //       </div>
+  //     </div>
+  //   );
+  // }
 
   if (error) {
     return (
@@ -168,7 +168,7 @@ const Biography = () => {
                 }
               >
                 <ReadMoreIcon />
-                <p className="text-white">Read More</p>
+                <p className="text-white">বিস্তারিত</p>
               </span>
             </button>
           </div>

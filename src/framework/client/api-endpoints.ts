@@ -21,5 +21,6 @@ export const API_ENDPOINTS = {
   DOCUMENT_INFO: "/document-type-info",
   OFFICE_ENERGY: "/office/energy",
   OFFICE_POWER: "/office/power",
+  ACHIEVEMENT: "/type-wise-photo-video",
   YOUTUBE: `https://www.googleapis.com/youtube/v3/search?key=${YOUTUBE_API_KEY}&channelId=${YOUTUBE_CHANNEL_ID}&part=snippet,id&order=date&maxResults=1000`,
 };

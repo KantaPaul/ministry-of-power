@@ -8,7 +8,8 @@ const YoutubeFeed = dynamic(() => import("@components/feeds/Youtube"));
 import { isEmpty } from "lodash";
 
 const TabFeed = () => {
-  const [tab, setTab] = useState(0);
+  const [tab, setTab] = useState(1);
+  // const [selectedIndex, setSelectedIndex] = useState(1);
 
   let tabItem = [
     {
@@ -39,7 +40,7 @@ const TabFeed = () => {
   }, [tab]);
 
   return !isEmpty(tabItem) ? (
-    <Tab.Group>
+    <Tab.Group defaultIndex={1}>
       <Tab.List
         className={
           "flex flex-nowrap justify-between px-6 border-b-[1px] border-solid border-[#E8E8E8]"

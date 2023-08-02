@@ -1,6 +1,6 @@
 // import SideSocial from "@components/common/SideSocial";
 import { useMemo } from "react";
-import Banner from "@components/banner/Banner";
+// import Banner from "@components/banner/Banner";
 import { useOfficerType } from "@framework/officers";
 import OfficerCard from "@components/officers/OfficerCard";
 import { isEmpty, isArray } from "lodash";
@@ -50,12 +50,12 @@ export default function Officers() {
 
   return (
     <div>
-      <Banner
+      {/* <Banner
         innerBannerBgImg={"/assets/img/inner-banner.png"}
         tag="MPEMR"
         title="Officers"
         subTitle="Officers Profile"
-      />
+      /> */}
 
       {!isEmpty(items) ? (
         <div className="officers-section py-[60px] md:py-[120px]">
@@ -66,7 +66,11 @@ export default function Officers() {
                   <div className={className} key={index}>
                     <OfficerCard
                       limit={100}
-                      title={item?.name}
+                      title={
+                        item?.name?.includes("মাননীয় প্রীতিমন্ত্রীর দপ্তর")
+                          ? "মাননীয় প্রতিমন্ত্রীর দপ্তর"
+                          : item?.name
+                      }
                       slug={item?.slug}
                     />
                   </div>

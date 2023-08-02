@@ -1,17 +1,17 @@
 import React from "react";
 import SinglePost from "@components/single/Index";
-import Banner from "@components/banner/Banner";
+// import Banner from "@components/banner/Banner";
 export { getStaticProps, getStaticPaths } from "@framework/ssr/news.power.ssr";
 
 const NewsSingle = ({ post, posts }: any) => {
   return (
     <>
-      <Banner
+      {/* <Banner
         innerBannerBgImg={"/assets/img/inner-banner.png"}
         tag="MPEMR"
         title="Power Division"
         subTitle="Our latest news"
-      />
+      /> */}
       <SinglePost post={post} posts={posts} meta="news" />
     </>
   );

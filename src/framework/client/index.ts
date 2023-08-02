@@ -8,6 +8,8 @@ import {
   RunningProject,
   Youtube,
   OfficerPaginator,
+  HeaderSlider,
+  Achievement,
 } from "@type/index";
 import axios from "axios";
 
@@ -26,7 +28,7 @@ class Client {
   };
   headerSlider = {
     all: (params?: any) =>
-      HttpClient.get(API_ENDPOINTS.HEADER_SLIDER, { ...params }),
+      HttpClient.get<HeaderSlider>(API_ENDPOINTS.HEADER_SLIDER, { ...params }),
   };
   latestNews = {
     all: (params?: any) =>
@@ -96,6 +98,12 @@ class Client {
   documentInfo = {
     get: (params?: any) =>
       HttpClient.get<RunningProject>(`${API_ENDPOINTS.DOCUMENT_INFO}`, {
+        ...params,
+      }),
+  };
+  achievement = {
+    get: (params?: any) =>
+      HttpClient.get<Achievement[]>(`${API_ENDPOINTS.ACHIEVEMENT}`, {
         ...params,
       }),
   };

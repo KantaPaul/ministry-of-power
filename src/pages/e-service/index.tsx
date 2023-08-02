@@ -1,4 +1,4 @@
-import Banner from "@components/banner/Banner";
+// import Banner from "@components/banner/Banner";
 import { useEService } from "@framework/e-service";
 import EService from "@components/e-service/e-service";
 import Loader from "@components/Loader";
@@ -31,12 +31,12 @@ export default function index() {
 
   return (
     <>
-      <Banner
+      {/* <Banner
         innerBannerBgImg={"/assets/img/inner-banner.png"}
         tag="MPEMR"
         title="Hon'ble Prime Minister"
         subTitle="E-Services Categories"
-      />
+      /> */}
 
       <EService eService={eService} />
     </>

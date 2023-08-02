@@ -1,5 +1,5 @@
 import React from "react";
-import Banner from "@components/banner/Banner";
+// import Banner from "@components/banner/Banner";
 import { Officers } from "@type/index";
 import Officer from "@components/officers/Single";
 export {
@@ -12,12 +12,12 @@ const OfficerSingle = ({ officer }: any) => {
 
   return (
     <>
-      <Banner
+      {/* <Banner
         innerBannerBgImg={"/assets/img/inner-banner.png"}
         tag="MPEMR"
         title="Officer"
         subTitle={data?.officer_name}
-      />
+      /> */}
 
       <Officer data={data} />
     </>

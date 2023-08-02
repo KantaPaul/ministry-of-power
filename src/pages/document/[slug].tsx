@@ -3,7 +3,7 @@ import {
   getStaticPaths,
 } from "@framework/ssr/document-type.ssr";
 export { getStaticProps, getStaticPaths };
-import Banner from "@components/banner/Banner";
+// import Banner from "@components/banner/Banner";
 import { Table } from "@components/ui/Table";
 import { PdfIcon } from "@components/icons/pdf-icon";
 import { formatDate } from "@lib/format-date";
@@ -20,12 +20,12 @@ const Tender = ({ document: columnData }: { document: Documentation[] }) => {
   if (router?.query?.slug === "eknojore") {
     return (
       <>
-        <Banner
+        {/* <Banner
           innerBannerBgImg={"/assets/img/inner-banner.png"}
           tag="MPEMR"
           title="Data List"
           subTitle={router?.query?.slug as string}
-        />
+        /> */}
         <div className="py-[60px] lg:py-24 relative overflow-hidden">
           <div className="content_body">
             {columnData?.map((data: Documentation, index: number) => {
@@ -122,12 +122,12 @@ const Tender = ({ document: columnData }: { document: Documentation[] }) => {
 
   return (
     <>
-      <Banner
+      {/* <Banner
         innerBannerBgImg={"/assets/img/inner-banner.png"}
         tag="MPEMR"
         title="Data List"
         subTitle={router?.query?.slug as string}
-      />
+      /> */}
 
       <div className="py-[60px] lg:py-24 relative overflow-hidden">
         <div className="content_body">

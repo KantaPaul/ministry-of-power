@@ -12,7 +12,7 @@ const Footer = () => {
     <div className="bg-[#000225] pt-[50px]">
       <div className="content_body">
         <div className="grid grid-cols-12 gap-[30px]">
-          <div className="col-span-12 lg:col-span-2">
+          <div className="col-span-12 lg:col-span-3">
             <LogoLight className="logo" />
           </div>
           {footer_links ? (
@@ -51,7 +51,7 @@ const Footer = () => {
           )}
 
           {contact ? (
-            <div className="col-span-12 sm:col-span-6 lg:col-span-5">
+            <div className="col-span-12 sm:col-span-6 lg:col-span-4">
               {contact?.title ? (
                 <h3 className="font-medium text-2xl text-white leading-[29px] mb-[20px]">
                   {contact?.title}
